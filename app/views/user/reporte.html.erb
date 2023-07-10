@@ -1,0 +1,128 @@
+
+    <div id="content" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-align: center;display: flex;flex-direction: column;align-items: center;justify-content: center;width:100%;height:100vh;">
+     <!-- <div>
+      <h1 style="text-transform: uppercase;color: #1976d2;border-bottom: 2px solid #1976d2e6;padding-inline: 10px;">HR Portal</h1>
+      <h4 style="text-transform: uppercase;margin-top: 10px;letter-spacing: 1px;">Deduction Report</h4>
+      <div style="margin-top: 10px;">
+        <p>Name : <%= "#{@user.first_name} #{@user.middle_name} #{@user.last_name} " %> </p>
+      </div>
+    </div> -->
+
+    <%
+      @health_insurance_deduction=@deductions.pluck(:health_insurance_deduction)
+    
+    %>
+      <table style="border: 1px solid black;border-collapse: collapse;margin-top: 10px;margin: auto;">
+          <thead>
+            <tr>
+              <th style="border: 1px solid black; padding: 10px;text-transform: uppercase;" colspan="4">Company Name</th>
+            </tr>
+            <tr>
+              <th style="border: 1px solid black; padding: 10px;text-transform: uppercase;" colspan="4">Salary Slip for Month</th>
+            </tr>
+            <tr>
+              <td style="text-align: left; padding: 10px;" colspan="2">Name: </td>
+              <td style="text-align: left; padding: 10px;" colspan="2">Designation: </td>
+            </tr>
+            <tr>
+              <td style="text-align: left; padding: 10px;" colspan="2">Bank Name: </td>
+              <td style="text-align: left; padding: 10px;" colspan="2">A/c No: </td>
+            </tr>
+          </thead>
+        <tr style="border: 1px solid black;">
+            <th colspan="2" style="border: 1px solid black; padding: 10px;text-transform: uppercase;">Earnings</th>
+            <th colspan="2" style="border: 1px solid black; padding: 10px;text-transform: uppercase;">Deductions</th>
+          </tr>
+          <tr>
+            <th style="border: 1px solid black; padding: 10px;text-transform: uppercase;">Type</th>
+            <th style="border: 1px solid black; padding: 10px;text-transform: uppercase;">Amount</th>
+            <th style="border: 1px solid black; padding: 10px;text-transform: uppercase;">Type</th>
+            <th style="border: 1px solid black; padding: 10px;text-transform: uppercase;">Amount</th>
+          </tr>
+        <tbody>
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; padding: 10px; text-align: left;">Salary</td>
+            <td style="border: 1px solid black; padding: 10px; text-align: left;"><%= @user.salary %></td>
+            <td style="border: 1px solid black; padding: 10px; text-align: left;">EPF</td>
+            <td style="border: 1px solid black; padding: 10px; text-align: left;">0</td>
+            <!-- <td style="border: 1px solid black; padding: 10px;">
+              <% total_allowances=0 %>
+              <% if @deductions %>
+              <% @deductions.each do |deduction| %>
+              <%= deduction.house_rent_allowances %><br>
+              <%= deduction.conveyance_allowances %><br>
+              <%= deduction.medical_allowances %><br>
+              <%= deduction.spcial_allowances %><br>
+              <% 
+                total_allowances=total_allowances+deduction.house_rent_allowances.to_f+deduction.conveyance_allowances.to_f+deduction.medical_allowances.to_f+deduction.spcial_allowances.to_f
+              %>
+                <% end %>                  
+              <% end %>
+            </td> -->
+            
+            <!-- <td style="border: 1px solid black; padding: 10px;">
+              <% total_deductions=0 %>
+              <% if @deductions %>
+              <% @deductions.each do |deduction| %>
+              <%= deduction.epf_deduction %><br>
+              <%= deduction.health_insurance_deduction %><br>
+              <%= deduction.professional_tax_deduction %><br>
+              <%= deduction.tds_deduction %><br>
+              <% 
+              total_deductions=total_deductions+deduction.epf_deduction.to_f+deduction.health_insurance_deduction.to_f+deduction.professional_tax_deduction.to_f+deduction.tds_deduction.to_f
+              %>
+                <% end %>                  
+              <% end %>
+            </td> -->
+          </tr>
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">House Rent Allowances</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Health Insurance</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+          </tr>
+
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Conveyance Allowances</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Professional tax</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+          </tr>
+
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Medical Allowances</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">TDS</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+          </tr>
+
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Special Allowances</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Gross Salary</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">Total Deductions</td>
+            <td style="border: 1px solid black; padding: 10px;text-align: left;">0</td>
+          </tr>
+
+          <tr style="border: 1px solid black;">
+            <td colspan="2" style="border: 1px solid black; padding: 10px;">Net Pay</td>
+            <td colspan="2" style="border: 1px solid black; padding: 10px;">0</td> 
+          </tr>
+          <!-- <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black;padding: 10px;font-weight: 600;">Sub Total</td>
+            <td style="border: 1px solid black;padding: 10px;font-weight: 600;"><%= @user.salary %> Rs.</td>
+            <td style="border: 1px solid black;padding: 10px;font-weight: 600;"><%= total_deductions %> Rs.</td>
+          </tr>
+          <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black;padding: 10px;font-weight: 600;" colspan="2">Total</td>
+            <td style="border: 1px solid black;padding: 10px;font-weight: 600;"><%= @user.salary.to_f - total_deductions.to_f %> Rs.</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
